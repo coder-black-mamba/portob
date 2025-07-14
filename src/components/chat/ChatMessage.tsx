@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface ChatMessageProps {
   message: string;
@@ -7,25 +9,29 @@ interface ChatMessageProps {
 }
 
 export const ChatMessage = ({ message, isUser, isTyping = false }: ChatMessageProps) => {
-  const renderMessageWithLinks = (text: string) => {
-    // Regex to match URLs starting with http or https
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.split(urlRegex).map((part, index) => {
-      if (part.match(urlRegex)) {
+  const markdownComponents = {
+    a: ({ node, ...props }: any) => (
+      <a
+        {...props}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline break-words text-blue-600 hover:text-blue-800"
+      />
+    ),
+    code({ node, inline, className, children, ...props }: any) {
+      if (inline) {
         return (
-          <a
-            key={index}
-            href={part}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline break-words text-blue-600 hover:text-blue-800"
-          >
-            {part}
-          </a>
+          <code className="bg-muted px-1 py-0.5 rounded text-xs" {...props}>
+            {children}
+          </code>
         );
       }
-      return <span key={index}>{part}</span>;
-    });
+      return (
+        <pre className="bg-muted rounded p-3 overflow-auto">
+          <code {...props}>{children}</code>
+        </pre>
+      );
+    },
   };
   return (
     <div
@@ -52,9 +58,13 @@ export const ChatMessage = ({ message, isUser, isTyping = false }: ChatMessagePr
             <span className="text-xs opacity-70 ml-2">typing...</span>
           </div>
         ) : (
-          <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
-            {renderMessageWithLinks(message)}
-          </p>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm as any]}
+            components={markdownComponents}
+            className="text-sm leading-relaxed whitespace-pre-wrap break-words"
+          >
+            {message}
+          </ReactMarkdown>
         )}
       </div>
     </div>

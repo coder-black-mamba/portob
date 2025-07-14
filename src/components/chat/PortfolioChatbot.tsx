@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { sendMessageToLLM, getFallbackResponse } from "@/services/chatApi";
 
 import { chatbotConfig } from "@/config/chatbot-config";
+// import console from "console";
 
 interface Message {
   id: string;
@@ -32,6 +33,7 @@ export const PortfolioChatbot = () => {
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    console.log("scrollToBottom");
   };
 
   useEffect(() => {
@@ -39,6 +41,7 @@ export const PortfolioChatbot = () => {
   }, [messages, isTyping]);
 
   const handleSendMessage = async (messageText: string) => {
+    console.log(messageText);
     // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
