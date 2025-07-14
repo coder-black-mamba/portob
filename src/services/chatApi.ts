@@ -87,5 +87,17 @@ export const getFallbackResponse = (message: string): string => {
   if (lowerMessage.includes('resume')) {
     return chatbotConfig.fallbackResponses.cv;
   }
+
+  if (lowerMessage.includes('tech')) {
+    return chatbotConfig.fallbackResponses.technology;
+  }
+
+  if (lowerMessage.includes('technology')) {
+    return chatbotConfig.fallbackResponses.technology;
+  }
+
+  if (lowerMessage.includes('experience')) {
+    return chatbotConfig.fallbackResponses.experience;
+  }
   return chatbotConfig.fallbackResponses.default;
 };

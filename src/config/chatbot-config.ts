@@ -21,9 +21,9 @@ export const chatbotConfig = {
   quickQuestions: [
     "Show me your best projects",
     "What technologies do you specialize in?",
+    "Tell me about yourself",
     "What's your development experience?", 
     "Download my CV",
-    "Tell me about yourself",
     "Are you available for new opportunities?",
     "How can I get in touch with you? Any contact info?"
   ],
@@ -78,11 +78,14 @@ export const chatbotConfig = {
       "FastAPI", "Hugging Face", "Transformers", "TensorFlow", "PyTorch", "scikit-learn"
     ].join(", ")}. Once my LLM backend API is connected, I'll share detailed insights into my experience, architecture decisions, and project work across AI and backend engineering.\n\nYou can also contact me via:\n\n- Email: [sde.sayed24@gmail.com](mailto:sde.sayed24@gmail.com)\n- WhatsApp/Phone: [+8801717963289](https://wa.me/8801717963289)\n- LinkedIn: [https://linkedin.com/in/itisabusayed](https://linkedin.com/in/itisabusayed)\n- GitHub: [https://github.com/coder-black-mamba](https://github.com/coder-black-mamba)`,  
   
-    projects: "I've built LLM-integrated backends, AI assistants, scalable APIs, and full-stack platforms — including this portfolio chatbot! Once the backend LLM is connected, I can walk you through architecture choices, AI integrations, and tech decisions in each project.\n\nYou can also contact me via:\n\n- Email: [sde.sayed24@gmail.com](mailto:sde.sayed24@gmail.com)\n- WhatsApp/Phone: [+8801717963289](https://wa.me/8801717963289)\n- LinkedIn: [https://linkedin.com/in/itisabusayed](https://linkedin.com/in/itisabusayed)\n- GitHub: [https://github.com/coder-black-mamba](https://github.com/coder-black-mamba)",
+    projects: "I've built LLM-integrated backends, AI assistants, scalable APIs, and full-stack platforms — including this portfolio chatbot! Once the backend LLM is connected, I can walk you through architecture choices, AI integrations, and tech decisions in each project. \n\nWould like me to ellaborate one ?",
   
     contact: "I'd love to connect! \n\nYou can reach me via the contact links on this site. Once the LLM backend is live, I'll be able to provide more personalized communication and collaboration info directly through this assistant. You can also contact me via:\n\n- Email: [sde.sayed24@gmail.com](mailto:sde.sayed24@gmail.com)\n- WhatsApp/Phone: [+8801717963289](https://wa.me/8801717963289)\n- LinkedIn: [https://linkedin.com/in/itisabusayed](https://linkedin.com/in/itisabusayed)\n- GitHub: [https://github.com/coder-black-mamba](https://github.com/coder-black-mamba)", 
 
     cv: "[You can download my CV here](https://drive.google.com/file/d/1ul7tJQGC6bEL3oLp4z-gHF8TVSWV9Kce/view?usp=sharing)",
+    
+    technology:"I am speciliazed at AI ,GEN AI, Backend And Clound Engineearing !",
+    experience:"5 years pore likhbo :) ",
   
     default: "Thanks for reaching out! I'm currently running in demo mode. Once my backend LLM API is integrated, I'll respond with tailored insights about my AI and backend engineering expertise, tech stack, and project experiences."
   } 
