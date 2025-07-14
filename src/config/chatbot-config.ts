@@ -3,25 +3,25 @@
 
 export const chatbotConfig = {
   // Your basic info
-  name: "Your Name", // Replace with your actual name
-  title: "Full Stack Developer", // Your professional title
-  location: "Your Location", // Where you're based
+  name: "MD. Abu Sayed",
+  title: "AI Engineer",
+  location: "Rajshahi, Bangladesh",
   
   // Personality settings
   personality: {
-    tone: "friendly", // friendly, professional, casual, enthusiastic
+    tone: "professional", // friendly, professional, casual, enthusiastic
     useEmojis: true,
-    responseStyle: "conversational", // conversational, concise, detailed
+    responseStyle: "concise", // conversational, concise, detailed
   },
   
   // Welcome message
-  welcomeMessage: "Hey there! 👋 I'm excited you're here! I'm a developer who loves building amazing things, and this chatbot is actually one of my projects. Ask me anything about my work, experience, or what I'm passionate about - I'm powered by an LLM so we can have a real conversation!",
+  welcomeMessage: "Hi, I'm Abu Sayed — an AI Engineer and full-stack developer passionate about building intelligent, real-world systems. From GenAI to backend architecture, feel free to ask me anything. Let's explore the future of tech together! \n\n Connect with me on : \n LinkedIn: https://www.linkedin.com/in/itisabusayed/ \n GitHub: https://github.com/coder-black-mamba",
   
   // Quick questions to show users
   quickQuestions: [
+    "Show me your best projects",
     "Tell me about yourself",
     "What's your development experience?", 
-    "Show me your best projects",
     "What technologies do you specialize in?",
     "Are you available for new opportunities?",
     "How can I get in touch with you?"
@@ -29,9 +29,11 @@ export const chatbotConfig = {
   
   // Technologies you work with (for fallback responses)
   technologies: [
-    "React", "TypeScript", "Node.js", "Python", 
-    "Next.js", "Express", "PostgreSQL", "MongoDB",
-    "AWS", "Docker", "Tailwind CSS"
+    "Node.js", "Express", "Python", "PostgreSQL", "MongoDB",
+    "Docker", "AWS", "Next.js", "React", "TypeScript", "Tailwind CSS",
+    "LLMs", "OpenAI API", "LangChain", "Pinecone", "Chroma",
+    "RAG (Retrieval-Augmented Generation)", "Prompt Engineering",
+    "FastAPI", "Hugging Face", "Transformers", "TensorFlow", "PyTorch", "scikit-learn"
   ],
   
   // Your key projects (for fallback responses)
@@ -39,29 +41,49 @@ export const chatbotConfig = {
     {
       name: "Portfolio Chatbot",
       description: "This interactive chatbot portfolio you're using right now!",
-      technologies: ["React", "TypeScript", "LLM Integration"]
+      technologies: ["React", "TypeScript", "LLM Integration"],
+      live_link: "https://absyd.xyz",
+      github_link: "https://github.com/coder-black-mamba/pp_portob"
     },
     // Add your other projects here
   ],
   
   // Contact information
   contact: {
-    email: "your.email@example.com",
-    linkedin: "https://linkedin.com/in/yourprofile",
-    github: "https://github.com/yourusername",
-    website: "https://yourwebsite.com"
+    email: "sde.sayed24@gmail.com",
+    linkedin: "https://linkedin.com/in/itisabusayed",
+    github: "https://github.com/coder-black-mamba",
+    website: "https://absyd.xyz"
   },
   
   // Fallback responses for when LLM is not available
+  // fallbackResponses: {
+  //   aboutYou: `I'm a passionate developer who loves creating innovative solutions! I specialize in ${["React", "TypeScript", "Node.js"].join(", ")} and have been building web applications for several years. Once you connect my backend LLM API, I'll be able to give you much more detailed and personalized responses about my work and experience.`,
+    
+  //   projects: "I've worked on various exciting projects including this chatbot portfolio! My backend LLM will provide detailed information about my portfolio once it's connected.",
+    
+  //   contact: "I'd love to connect! You can reach out through the contact information on my portfolio. The LLM backend will provide more specific contact details once configured.",
+    
+  //   default: "Thanks for your question! I'm currently running in demo mode. Once my LLM backend is connected, I'll be able to provide much more detailed and personalized responses about my portfolio and experience."
+  // }
+
+  //  Fallback resposes updated
   fallbackResponses: {
-    aboutYou: `I'm a passionate developer who loves creating innovative solutions! I specialize in ${["React", "TypeScript", "Node.js"].join(", ")} and have been building web applications for several years. Once you connect my backend LLM API, I'll be able to give you much more detailed and personalized responses about my work and experience.`,
-    
-    projects: "I've worked on various exciting projects including this chatbot portfolio! My backend LLM will provide detailed information about my portfolio once it's connected.",
-    
-    contact: "I'd love to connect! You can reach out through the contact information on my portfolio. The LLM backend will provide more specific contact details once configured.",
-    
-    default: "Thanks for your question! I'm currently running in demo mode. Once my LLM backend is connected, I'll be able to provide much more detailed and personalized responses about my portfolio and experience."
-  }
+    aboutYou: `I'm an AI Engineer and backend-focused full-stack developer passionate about building intelligent, scalable systems. My core expertise spans ${[
+      "Node.js", "Express", "Python", "PostgreSQL", "MongoDB",
+      "Docker", "AWS", "Next.js", "React", "TypeScript", "Tailwind CSS",
+      "LLMs", "OpenAI API", "LangChain", "Pinecone", "Chroma",
+      "RAG (Retrieval-Augmented Generation)", "Prompt Engineering",
+      "FastAPI", "Hugging Face", "Transformers", "TensorFlow", "PyTorch", "scikit-learn"
+    ].join(", ")}. Once my LLM backend API is connected, I'll share detailed insights into my experience, architecture decisions, and project work across AI and backend engineering.`,
+  
+    projects: "I've built LLM-integrated backends, AI assistants, scalable APIs, and full-stack platforms — including this portfolio chatbot! Once the backend LLM is connected, I can walk you through architecture choices, AI integrations, and tech decisions in each project.",
+  
+    contact: "I'd love to connect! You can reach me via the contact links on this site. Once the LLM backend is live, I'll be able to provide more personalized communication and collaboration info directly through this assistant.",
+  
+    default: "Thanks for reaching out! I'm currently running in demo mode. Once my backend LLM API is integrated, I'll respond with tailored insights about my AI and backend engineering expertise, tech stack, and project experiences."
+  } 
+  
 };
 
 // System prompt template for your LLM backend

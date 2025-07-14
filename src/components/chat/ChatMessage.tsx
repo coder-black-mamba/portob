@@ -7,6 +7,26 @@ interface ChatMessageProps {
 }
 
 export const ChatMessage = ({ message, isUser, isTyping = false }: ChatMessageProps) => {
+  const renderMessageWithLinks = (text: string) => {
+    // Regex to match URLs starting with http or https
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.split(urlRegex).map((part, index) => {
+      if (part.match(urlRegex)) {
+        return (
+          <a
+            key={index}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline break-words text-blue-600 hover:text-blue-800"
+          >
+            {part}
+          </a>
+        );
+      }
+      return <span key={index}>{part}</span>;
+    });
+  };
   return (
     <div
       className={cn(
@@ -18,7 +38,7 @@ export const ChatMessage = ({ message, isUser, isTyping = false }: ChatMessagePr
         className={cn(
           "max-w-[80%] rounded-2xl px-4 py-3 shadow-lg",
           isUser
-            ? "bg-chat-user text-chat-user-foreground ml-4"
+            ? "bg-chat-user text-chat-user-foreground ml-4 bg-rose-500"
             : "bg-chat-assistant text-chat-assistant-foreground mr-4 border border-border"
         )}
       >
@@ -32,7 +52,9 @@ export const ChatMessage = ({ message, isUser, isTyping = false }: ChatMessagePr
             <span className="text-xs opacity-70 ml-2">typing...</span>
           </div>
         ) : (
-          <p className="text-sm leading-relaxed whitespace-pre-wrap">{message}</p>
+          <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
+            {renderMessageWithLinks(message)}
+          </p>
         )}
       </div>
     </div>

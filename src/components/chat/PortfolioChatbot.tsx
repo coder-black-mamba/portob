@@ -104,28 +104,30 @@ export const PortfolioChatbot = () => {
       <div className="flex items-center justify-between p-6 border-b border-border bg-card/50 backdrop-blur">
         <div className="flex items-center space-x-3">
           <div className="relative">
-            <div className="p-2 rounded-full bg-gradient-to-r from-primary to-purple-600">
-              <User className="h-6 w-6 text-white" />
+            <div className="p-1 rounded-full bg-gray-900 border border-gray-100">
+              <div className="w-16 h-16">
+                <img src="/images/casual-dp.jpg" alt="Abu Sayed" className="rounded-full w-full h-full" />
+              </div>
             </div>
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-background"></div>
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-500 border border-gray-100"></div>
           </div>
           <div>
-            <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-              {chatbotConfig.name || "Developer Portfolio"}
+            <h1 className="text-xl font-bold bg-gradient-to-r from-rose-400 to-rose-600 bg-clip-text text-white">
+              {chatbotConfig.name || "Abu Sayed"}
             </h1>
-            <p className="text-sm text-muted-foreground">{chatbotConfig.title} • Let's Chat!</p>
+            <p className="text-sm text-muted-foreground">A Passionate AI Engineer • Let's Build Together!</p>
           </div>
         </div>
         
         {/* Connection Status */}
         <div className="flex items-center space-x-2">
           {isOnline ? (
-            <div className="flex items-center space-x-1 text-green-500 text-xs">
+            <div className="flex items-center space-x-1 text-green-500 text-xs hidden md:flex">
               <Wifi className="h-3 w-3" />
               <span>LLM Connected</span>
             </div>
           ) : (
-            <div className="flex items-center space-x-1 text-orange-500 text-xs">
+            <div className="flex items-center space-x-1 text-orange-500 text-xs hidden md:flex">
               <WifiOff className="h-3 w-3" />
               <span>Demo Mode</span>
             </div>
@@ -143,7 +145,7 @@ export const PortfolioChatbot = () => {
       )}
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-background to-background/95">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-background to-background/95 pb-64">
         {messages.map((message) => (
           <ChatMessage
             key={message.id}
@@ -158,13 +160,15 @@ export const PortfolioChatbot = () => {
       </div>
 
       {/* Quick Questions */}
-      <QuickQuestions 
-        onQuestionClick={handleSendMessage} 
-        disabled={isTyping}
-      />
+      <div className="w-full overflow-x-auto fixed bottom-16 left-0 right-0 max-w-4xl mx-auto bg-card/30 backdrop-blur">
+        <QuickQuestions 
+          onQuestionClick={handleSendMessage} 
+          disabled={isTyping}
+        />
+      </div>
 
       {/* Input */}
-      <div className="border-t border-border bg-card/30 backdrop-blur">
+      <div className="border-t border-border bg-card/30 backdrop-blur fixed bottom-0 left-0 right-0 max-w-4xl mx-auto ">
         <ChatInput 
           onSendMessage={handleSendMessage} 
           disabled={isTyping}
