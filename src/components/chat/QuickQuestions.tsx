@@ -9,8 +9,8 @@ interface QuickQuestionsProps {
 export const QuickQuestions = ({ onQuestionClick, disabled = false }: QuickQuestionsProps) => {
   return (
     <div className="px-4 py-2">
-      <p className="text-xs text-muted-foreground mb-3 font-medium">Quick questions:</p>
-      <div className="flex flex-wrap gap-2">
+      <p className="text-xs text-muted-foreground mb-1 font-medium">Quick questions:</p>
+      <div className="flex gap-2">
         {chatbotConfig.quickQuestions.map((question, index) => (
           <Button
             key={index}
@@ -18,7 +18,7 @@ export const QuickQuestions = ({ onQuestionClick, disabled = false }: QuickQuest
             size="sm"
             onClick={() => onQuestionClick(question)}
             disabled={disabled}
-            className="text-xs rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+            className="text-xs rounded-full hover:bg-rose-500  transition-colors"
           >
             {question}
           </Button>
