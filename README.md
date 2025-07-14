@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# Portfolio Chatbot
 
-## Project info
+A modern, interactive portfolio website built as a chatbot interface. Users can chat with an LLM-powered version of you to learn about your skills, experience, and projects.
 
-**URL**: https://lovable.dev/projects/15bde982-8585-4741-9345-e25e3ae13576
+## Features
 
-## How can I edit this code?
+- 🤖 **LLM-Powered Conversations**: Real chatbot experience powered by your backend LLM
+- 💬 **Modern Chat UI**: Beautiful message bubbles with typing indicators
+- 🎨 **Stunning Design**: Dark theme with purple gradients and smooth animations
+- 📱 **Fully Responsive**: Works perfectly on desktop, tablet, and mobile
+- 🔌 **Easy Backend Integration**: Simple API interface for your LLM backend
+- 🚀 **Fallback Mode**: Graceful degradation when backend is unavailable
 
-There are several ways of editing your application.
+## Quick Start
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/15bde982-8585-4741-9345-e25e3ae13576) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+1. **Clone and Install**
+```bash
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Set up Environment**
+```bash
+# Create .env file
+REACT_APP_API_URL=http://localhost:3001/api
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. **Run Development Server**
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. **Connect Your LLM Backend**
+   - See `src/lib/backend-example.md` for backend integration guide
+   - The chatbot runs in demo mode until you connect your backend
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Backend Integration
 
-**Use GitHub Codespaces**
+Your backend needs a `POST /api/chat` endpoint that:
+- Accepts: `{ message: string, conversation_id?: string }`
+- Returns: `{ response: string, conversation_id?: string }`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Example integrations available for:
+- OpenAI GPT-4
+- Anthropic Claude  
+- Google Gemini
+- Local LLMs with Ollama
 
-## What technologies are used for this project?
+## Customization
 
-This project is built with:
+1. **Update Your Info**: Edit the system prompts and fallback responses in `src/services/chatApi.ts`
+2. **Modify Quick Questions**: Update `src/data/portfolio-qa.ts`
+3. **Customize Styling**: Adjust colors and animations in `src/index.css` and `tailwind.config.ts`
+4. **Add Features**: Extend the chat interface with more components
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Technologies Used
 
-## How can I deploy this project?
+- **Frontend**: React, TypeScript, Tailwind CSS, shadcn/ui
+- **Build Tool**: Vite
+- **Animations**: Custom Tailwind animations
+- **Icons**: Lucide React
+- **Backend**: Your choice of LLM API
 
-Simply open [Lovable](https://lovable.dev/projects/15bde982-8585-4741-9345-e25e3ae13576) and click on Share -> Publish.
+## Deployment
 
-## Can I connect a custom domain to my Lovable project?
+The frontend can be deployed to any static hosting service:
+- Vercel (recommended)
+- Netlify
+- GitHub Pages
+- Your own server
 
-Yes, you can!
+Your LLM backend can be deployed to:
+- Railway
+- Render
+- Heroku
+- AWS Lambda
+- Your own VPS
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Built with ❤️ using modern web technologies

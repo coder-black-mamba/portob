@@ -57,11 +57,12 @@ export const portfolioQA: QAItem[] = [
 ];
 
 export const quickQuestions = [
-  "Who are you?",
-  "What technologies do you use?",
-  "Show me your projects",
-  "Are you available for work?",
-  "How can I contact you?"
+  "Tell me about yourself",
+  "What's your development experience?", 
+  "Show me your best projects",
+  "What technologies do you specialize in?",
+  "Are you available for new opportunities?",
+  "How can I get in touch with you?"
 ];
 
 export const findAnswer = (question: string): string => {

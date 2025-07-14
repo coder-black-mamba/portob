@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { quickQuestions } from "@/data/portfolio-qa";
+import { chatbotConfig } from "@/config/chatbot-config";
 
 interface QuickQuestionsProps {
   onQuestionClick: (question: string) => void;
@@ -11,7 +11,7 @@ export const QuickQuestions = ({ onQuestionClick, disabled = false }: QuickQuest
     <div className="px-4 py-2">
       <p className="text-xs text-muted-foreground mb-3 font-medium">Quick questions:</p>
       <div className="flex flex-wrap gap-2">
-        {quickQuestions.map((question, index) => (
+        {chatbotConfig.quickQuestions.map((question, index) => (
           <Button
             key={index}
             variant="outline"
