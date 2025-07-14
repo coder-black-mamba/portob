@@ -61,7 +61,11 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				'chat-user': 'hsl(var(--chat-user))',
+				'chat-user-foreground': 'hsl(var(--chat-user-foreground))',
+				'chat-assistant': 'hsl(var(--chat-assistant))',
+				'chat-assistant-foreground': 'hsl(var(--chat-assistant-foreground))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +88,37 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'slide-up': {
+					from: {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					to: {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'typing': {
+					'0%': { width: '0ch' },
+					'100%': { width: '20ch' }
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
+				},
+				'bounce-slow': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-4px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'slide-up': 'slide-up 0.4s ease-out',
+				'typing': 'typing 2s steps(20, end)',
+				'pulse-slow': 'pulse-slow 2s infinite',
+				'bounce-slow': 'bounce-slow 1s infinite alternate'
 			}
 		}
 	},
