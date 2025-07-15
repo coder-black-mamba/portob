@@ -1,6 +1,6 @@
 import { chatbotConfig } from "@/config/chatbot-config";
 import OpenAI from "openai";
-
+import { getSystemPrompt } from "../config/chatbot-config";
 console.log(import.meta.env.VITE_MOONSHOT_API_KEY);
 export interface ChatRequest {
   message: string;
@@ -13,22 +13,41 @@ export interface ChatResponse {
   error?: string;
 }
 
+function getConversationId() {
+  return localStorage.getItem('conversation_id') || '';
+}
+
+function setConversationId(conversationId: string) {
+  localStorage.setItem('conversation_id', conversationId);
+}
+
 // Configure your backend API endpoint here
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://portob-backend.onrender.com/api';
 
 export const sendMessageToLLM = async (message: string, conversationId?: string): Promise<ChatResponse> => {
   console.log("sendMessageToLLM");
   try {
+
+    let prompt = getSystemPrompt();
+    prompt += "\n\n User: " + message;
     const response = await fetch(`${API_BASE_URL}/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        message,
-        conversation_id: conversationId,
+        message:prompt,
+        conversation_id: getConversationId(),
       }),
     });
+    const responseJson = await response.json();
+
+    // {
+    //   "conversation_id": "a90eeb14-38f2-4bcf-8300-e9b79c265ce1",
+    //   "response": "## Hello!\nWelcome to Abu Sayed's developer portfolio. I'm glad you're here. How can I assist you today? Are you looking for information about Abu's projects, skills, or experience?"
+    // }
+
+    setConversationId(responseJson.conversation_id);
 
 
     // use seperate server for this :) 
@@ -50,11 +69,11 @@ export const sendMessageToLLM = async (message: string, conversationId?: string)
     //   console.log(response);
     //   console.log(response.choices[0].message.content);
 
-    if (!response.ok) {
+    if (response.status !== 200 || !responseJson.response) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data: ChatResponse = await response.json();
+    const data: ChatResponse = responseJson;
     return data;
   } catch (error) {
     console.error('Error calling LLM API:', error);
