@@ -40,6 +40,28 @@ export const PortfolioChatbot = () => {
     scrollToBottom();
   }, [messages, isTyping]);
 
+  // Periodically send conversation snapshot to backend
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const convId = localStorage.getItem("conversation_id");
+      if (!convId) return;
+
+      fetch("https://portob-backend.onrender.com/api/end-conversation", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          conversation_id: convId,
+          user_email: "abusayed@gmail.com"
+        })
+      })
+        .then(res => res.json())
+        .then(data => console.log("Snapshot sent", data))
+        .catch(err => console.log(err));
+    }, 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSendMessage = async (messageText: string) => {
     console.log(messageText);
     // Add user message

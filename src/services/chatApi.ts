@@ -1,7 +1,7 @@
 import { chatbotConfig } from "@/config/chatbot-config";
 import OpenAI from "openai";
 import { getSystemPrompt } from "../config/chatbot-config";
-console.log(import.meta.env.VITE_MOONSHOT_API_KEY);
+
 export interface ChatRequest {
   message: string;
   conversation_id?: string;
